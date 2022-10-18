@@ -2,11 +2,11 @@
 #include <stdlib.h>
 // Data set size
 
-void dist_itr(inout_float_t A[200])
-{
+void dist_itr(inout_float_t A[200]) {
+#pragma HLS RESOURCE core=RAM_S2P_BRAM latency=2 variable=A 
   for (int i = 0; i < 100; i++) {
-#pragma HLS PIPELINE II=14
-    A[2*i] = A[i] + 0.5f;
+#pragma HLS PIPELINE II = 14
+    A[2 * i] = A[i] + 0.5f;
   }
 }
 
@@ -23,4 +23,3 @@ int main() {
 
   return 0;
 }
-
